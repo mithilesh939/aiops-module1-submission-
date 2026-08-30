@@ -7,7 +7,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, f1_score
 from sklearn.preprocessing import StandardScaler
 
-# connect to the local tracking server (started separately)
+
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("mnist-mlp-experiments")
 print("Tracking URI:", mlflow.get_tracking_uri())
@@ -21,13 +21,12 @@ X_train, X_val, y_train, y_val = train_test_split(
     X_train, y_train, test_size=0.2, random_state=42
 )
 
-# scale features
+
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_val   = scaler.transform(X_val)
 X_test  = scaler.transform(X_test)
 
-# base training function
 def train_and_evaluate(hidden_layer_sizes, learning_rate, batch_size):
     model = MLPClassifier(
         hidden_layer_sizes=hidden_layer_sizes,
@@ -45,7 +44,7 @@ def train_and_evaluate(hidden_layer_sizes, learning_rate, batch_size):
     f1        = f1_score(y_test, model.predict(X_test), average="macro")
     return model, train_acc, val_acc, test_acc, f1
 
-# instrumented logging function
+
 def train_and_log(hidden_layer_sizes, learning_rate, batch_size, run_name=None):
     with mlflow.start_run(run_name=run_name):
 
