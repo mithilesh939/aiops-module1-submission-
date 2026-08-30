@@ -1,5 +1,4 @@
 [core]
-    remote = myremote
-['remote "myremote"']
-    url = ssh://localhost/home/mithilesh/dvc_ssh_storage
-    user = mithilesh
+    remote = friendremote
+['remote "friendremote"']
+    url = ssh://navadeep04@10.253.165.132/home/navadeep04/dvc_ssh_storage
