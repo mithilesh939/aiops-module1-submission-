@@ -1,0 +1,5 @@
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = ssh://localhost/home/mithilesh/dvc_ssh_storage
+    user = mithilesh
